@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList, Dimensions } from 'react-native';
 import ImageCard from './src/components/ImageCard';
 
 const images = [
@@ -21,6 +21,8 @@ const images = [
   },
 ]
 
+const { width: screenWidth, height: screenHeight} = Dimensions.get('screen'); 
+
 export default function App() {
   return (
     <View style={styles.container}>
@@ -36,6 +38,7 @@ export default function App() {
             </View>
           )
         }}
+        pagingEnabled
       />
     </View>
   );
@@ -48,4 +51,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  imageWrapper: {
+    width: screenWidth,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 });
