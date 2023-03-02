@@ -8,7 +8,7 @@
 > __NOTE__: The background images were built using the __Animated API__ to animate the __Image__ component from React native.
 
 ## Screenshot
-<img src="./assets/screenshot1.gif" width="50%" height="50%"  ></img>
+<img src="./assets/screenshot1.gif" width="25%" height="25%"  ></img>
 
 ##  🔧 Built with
 
