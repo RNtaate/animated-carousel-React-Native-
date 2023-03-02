@@ -10,6 +10,9 @@ export default function App() {
     <View style={styles.container}>
 
       <View style={StyleSheet.absoluteFillObject} >
+
+        {/* Add the background images on top of each other and set them postion absolute using the StyleSheet.absouteFillObject */}
+        
         {images.map((image) => {
           return (
             <Image source={image.posterPath} resizeMode="cover" style={[StyleSheet.absoluteFillObject, styles.backdropImage]} />
