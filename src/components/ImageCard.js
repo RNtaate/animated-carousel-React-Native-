@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     overflow: 'hidden',
     elevation: 20,
+    borderColor: 'white',
+    borderWidth: 2,
+    borderStyle: 'solid'
   },
   imageCardImage: {
     width: '100%',
