@@ -3,10 +3,10 @@ import {View, Text, StyleSheet, Dimensions, ImageBackground} from 'react-native'
 
 const { width: screenWidth, height: screenHeight} = Dimensions.get('screen');
 
-const ImageCard = () => {
+const ImageCard = ({path}) => {
   return (
     <View style={styles.imageContainer} >
-      <ImageBackground source={require('../../assets/avengers_endgame.jpg')} resizeMode="cover" style={styles.imageCardImage} ></ImageBackground>
+      <ImageBackground source={path} resizeMode="cover" style={styles.imageCardImage} ></ImageBackground>
     </View>
   )
 }

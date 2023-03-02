@@ -2,10 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import ImageCard from './src/components/ImageCard';
 
+const imagePath = require('./assets/avengers_ultron.jpg')
+
 export default function App() {
   return (
     <View style={styles.container}>
-      <ImageCard />
+      <ImageCard path={imagePath} />
     </View>
   );
 }
