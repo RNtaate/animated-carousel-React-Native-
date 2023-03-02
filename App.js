@@ -1,25 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, FlatList, Dimensions } from 'react-native';
 import ImageCard from './src/components/ImageCard';
-
-const images = [
-  {
-    movie: "avengers",
-    posterPath: require("./assets/avengers_original.jpg")
-  },
-  {
-    movie: "ultron",
-    posterPath: require("./assets/avengers_ultron.jpg")
-  },
-  {
-    movie: "infinity",
-    posterPath: require("./assets/avengers_infinity.jpg")
-  },
-  {
-    movie: "endgame",
-    posterPath: require("./assets/avengers_endgame.jpg")
-  },
-]
+import images from './src/services/ImagesList'
 
 const { width: screenWidth, height: screenHeight} = Dimensions.get('screen'); 
 
