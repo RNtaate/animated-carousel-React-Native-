@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, FlatList, Dimensions } from 'react-native';
+import { StyleSheet, View, FlatList, Dimensions, Image } from 'react-native';
 import ImageCard from './src/components/ImageCard';
 import images from './src/services/ImagesList'
 
@@ -8,6 +8,15 @@ const { width: screenWidth, height: screenHeight} = Dimensions.get('screen');
 export default function App() {
   return (
     <View style={styles.container}>
+
+      <View style={StyleSheet.absoluteFillObject} >
+        {images.map((image) => {
+          return (
+            <Image source={image.posterPath} resizeMode="cover" style={[StyleSheet.absoluteFillObject, styles.backdropImage]} />
+          )
+        }) }
+      </View>
+
       <FlatList 
         data={images}
         horizontal
@@ -37,5 +46,9 @@ const styles = StyleSheet.create({
     width: screenWidth,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  backdropImage: {
+    width: screenWidth,
+    height: screenHeight
   }
 });
