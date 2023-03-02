@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Dimensions, ImageBackground} from 'react-native';
 
 const { width: screenWidth, height: screenHeight} = Dimensions.get('screen');
 
 const ImageCard = () => {
   return (
     <View style={styles.imageContainer} >
-      <Text>Image Card</Text>
+      <ImageBackground source={require('../../assets/avengers_endgame.jpg')} resizeMode="cover" style={styles.imageCardImage} ></ImageBackground>
     </View>
   )
 }
@@ -18,7 +18,13 @@ const styles = StyleSheet.create({
     backgroundColor: "gray",
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 20
+    borderRadius: 20,
+    overflow: 'hidden',
+    elevation: 20,
+  },
+  imageCardImage: {
+    width: '100%',
+    height: '100%',
   }
 })
 
