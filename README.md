@@ -8,13 +8,35 @@
 > __NOTE__: The background images were built using the __Animated API__ to animate the __Image__ component from React native.
 
 ## Screenshot
-<img src="./assets/screenshot1.gif" width="25%" height="25%"  ></img>
+<img src="./assets/screenshot1.gif" width="35%" height="35%"  ></img>
 
 ##  🔧 Built with
 
 - React Native
 - Expo
 - ReactJS
+
+## 🔴 Live Demo
+ - <*not yet available*>
+
+## Get started
+### Prerequisites
+
+- Yarn
+- Android Simulator *__or__* IOS Simulator *__or__* A smart device with __Expo GO__ installed on it.
+
+### Steps to follow
+
+1. Clone the repository to your local machine by running `git clone git@github.com:RNtaate/animated-carousel-React-Native-.git` in your terminal
+
+1. On your local machine, navigate to the project folder using the `cd` command in your terminal
+
+1. Run `yarn` to install all the necessary dependencies.
+
+1. Run `npm start` to start the application on a local server
+
+1. if you are using a device with __Expo GO__:
+  - Open the __Expo GO__ app and scan the  QR code in your terminal, the project will be bundled and run on your device. Please be patient while this process takes place.
 
 ## 🤝 Contributions
   There are two ways of contributing to this project:
