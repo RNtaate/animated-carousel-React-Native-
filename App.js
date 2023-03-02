@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, FlatList, Dimensions, Image, Animated } from 'react-native';
 
 import ImageCard from './src/components/ImageCard';
