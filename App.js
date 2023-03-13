@@ -10,6 +10,23 @@ export default function App() {
 
   const scrollX = useRef(new Animated.Value(0)).current
 
+
+  const Dots = () => {
+    return (
+      <View style={[styles.dotsContainer, {zIndex: 100}]} >
+        <View style={styles.dotsHolder} >
+          { 
+            images.map((image) => {
+              return(
+                <View style={styles.dot} key={image.movie} ></View>
+              )
+            })
+          }
+        </View>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.container}>
 
@@ -54,6 +71,8 @@ export default function App() {
         }}
         pagingEnabled
       />
+
+      <Dots />
     </View>
   );
 }
@@ -70,4 +89,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  dotsContainer: {
+    position: 'absolute',
+    width: screenWidth,
+    bottom: (screenHeight / 10),
+    alignItems: 'center'
+  },
+  dotsHolder: {
+    width: (screenWidth / 3),
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: "row"
+  },
+  dot: {
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+    backgroundColor: 'white'
+  }
 });
