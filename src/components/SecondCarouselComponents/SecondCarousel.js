@@ -1,10 +1,12 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native';
 
+import SecondImageCard from './SecondImageCard';
+
 const SecondCarousel = () => {
   return (
-    <View>
-      <Text>This is the second carousel</Text>
+    <View style={styles.container} >
+      <SecondImageCard />
     </View>
   )
 }
