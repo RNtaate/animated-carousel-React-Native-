@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { StyleSheet, View, Dimensions, Animated } from 'react-native';
 
-import ImageCard from '../components/ImageCard';
-import images from '../services/ImagesList';
+import ImageCard from './ImageCard';
+import images from '../../services/ImagesList';
 
 const { width: screenWidth, height: screenHeight} = Dimensions.get('screen');
 
