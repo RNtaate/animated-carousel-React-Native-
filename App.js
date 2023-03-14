@@ -12,13 +12,26 @@ export default function App() {
 
 
   const Dots = () => {
+
     return (
       <View style={[styles.dotsContainer, {zIndex: 100}]} >
         <View style={styles.dotsHolder} >
           { 
-            images.map((image) => {
+            images.map((image, index) => {
+              const inputRange = [
+                (index - 1) * screenWidth,
+                index * screenWidth,
+                (index + 1) * screenWidth
+              ]
+
+              const scale = scrollX.interpolate({
+                inputRange,
+                outputRange: [1, 2, 1],
+                extrapolate: 'clamp'
+              })
+
               return(
-                <View style={styles.dot} key={image.movie} ></View>
+                <Animated.View style={[styles.dot, { transform: [{scale}]} ]} key={image.movie} ></Animated.View>
               )
             })
           }
@@ -105,6 +118,6 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 10,
-    backgroundColor: 'white'
+    backgroundColor: 'rgba(255, 255, 255, 0.4)'
   }
 });
