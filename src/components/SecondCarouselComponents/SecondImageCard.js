@@ -3,14 +3,14 @@ import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 
 const {width: screenWidth, height: screenHeight} = Dimensions.get('screen')
 
-const SecondImageCard = () => {
+const SecondImageCard = ({movie}) => {
   return (
     <View style={styles.cardContainer} >
       <View style={styles.cardImageHolder}>
-        <Image source={require("../../../assets/avengers_original.jpg")} resizeMode="cover" style={styles.cardImage} />
+        <Image source={movie.posterPath} resizeMode="cover" style={styles.cardImage} />
       </View>
       <View style={styles.cardDetails} >
-        <Text style={styles.cardHeading} numberOfLines={1} >Marvel's The Avengers</Text>
+        <Text style={styles.cardHeading} numberOfLines={1} >{movie.name}</Text>
         <Text style={styles.cardDesc} numberOfLines={2} >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti, ipsa?</Text>
       </View>
     </View>
