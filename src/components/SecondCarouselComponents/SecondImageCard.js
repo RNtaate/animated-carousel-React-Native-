@@ -22,16 +22,17 @@ const styles = StyleSheet.create({
     width: (screenWidth * 0.5),
     height: (screenHeight / 2),
     overflow: 'hidden',
-    borderWidth: 1,
+    borderWidth: 10,
     backgroundColor: 'white',
     borderColor: 'white',
-    borderRadius: 20
+    borderRadius: 30
   },
   cardImageHolder: {
     width: "100%",
     height: "75%",
     overflow: 'hidden',
-    borderRadius: 20
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 20
   },
   cardImage: {
     width: "100%",
@@ -41,7 +42,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 5,
     paddingVertical: 5,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   cardHeading: {
     fontSize: 16,
