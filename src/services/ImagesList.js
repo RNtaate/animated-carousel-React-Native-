@@ -19,6 +19,11 @@ const images = [
     name: "Avengers: Endgame",
     posterPath: require("../.././assets/avengers_endgame.jpg")
   },
+  {
+    movie: "bvs",
+    name: "Batman V Superman: Dawn Of Justice",
+    posterPath: require("../.././assets/batman3.png")
+  },
 ]
 
 export default images;
