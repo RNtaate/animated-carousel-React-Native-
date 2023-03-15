@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { View, StyleSheet, FlatList, Dimensions, Animated } from 'react-native';
+import { View, StyleSheet, FlatList, Dimensions, Animated, Image } from 'react-native';
 
 import SecondImageCard from './SecondImageCard';
 import images from '../../services/ImagesList';
@@ -16,6 +16,32 @@ const SecondCarousel = () => {
 
   return (
     <View style={styles.container} >
+
+      {
+        moviesData.map((singleMovie, index) => {
+
+          const inputRange = [
+            (index - 2) * ITEM_SIZE,
+            (index - 1) * ITEM_SIZE,
+            index * ITEM_SIZE
+          ]
+
+          const opacity = scrollX.interpolate({
+            inputRange,
+            outputRange: [0, 1, 0]
+          })
+          return (
+            <Animated.View key={singleMovie.movie} style={{position: "absolute", top: 0, width: "100%", backgroundColor: 'transparent', height: (screenHeight * 0.6), overflow: 'hidden', opacity}} >
+              {singleMovie.posterPath ? 
+                <Image source={singleMovie.posterPath} resizeMode="cover" style={styles.backdropImage} />
+                : null
+              }
+            </Animated.View>
+          )
+        })
+      }
+
+
       <Animated.FlatList
         data={moviesData}
         keyExtractor={(item) => item.movie}
@@ -70,6 +96,10 @@ const styles = StyleSheet.create({
     width: ITEM_SIZE,
     justifyContent: 'flex-end',
     alignItems: 'center',
+  },
+  backdropImage: {
+    width: "100%",
+    height: "100%"
   }
 })
 
