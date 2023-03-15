@@ -30,7 +30,7 @@ const CarouselTabs = () => {
         tabBarIcon: ({color}) => (createTabBarIcon(route.name, color)),
         tabBarStyle: {
           height: 60,
-          backgroundColor: "rgba(255, 255, 255, 0.3)",
+          backgroundColor: "rgba(0, 0, 0, 0.3)",
           paddingBottom: 5,
           position: 'absolute',
           borderTopWidth: 0,
