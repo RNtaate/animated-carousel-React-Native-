@@ -1,21 +1,9 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+
+import SecondCarousel from '../components/SecondCarouselComponents/SecondCarousel'
 
 export default function SecondCarouselScreen() {
   return (
-    <View style={styles.container} >
-      <Text>
-        Second Carousel Screen
-      </Text>
-    </View>
+    <SecondCarousel />
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: "#ddd"
-  }
-})
