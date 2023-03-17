@@ -57,7 +57,7 @@ const ThirdCarousel = () => {
                     </AnimatedSvg>
                   }
                 >
-                  <Image source={singleMovie.posterPath} resizeMode="cover" style={{width: "100%", height: "100%"}} />
+                  <Image source={singleMovie.backdrop} resizeMode="cover" style={{width: "100%", height: "100%"}} />
                 </MaskedView>
               )
             }
