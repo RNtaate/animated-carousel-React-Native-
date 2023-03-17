@@ -14,6 +14,8 @@ const BACKDROP_HEIGHT = screenHeight * 0.6
 
 const moviesData = [{movie: 'left_spacer'}, ...images, {movie: 'right_spacer'}]
 
+const AnimatedSvg = Animated.createAnimatedComponent(Svg);
+
 const ThirdCarousel = () => {
 
   const scrollX = useRef( new Animated.Value(0)).current
@@ -22,24 +24,7 @@ const ThirdCarousel = () => {
     <View style={styles.container} >
       <View style={styles.backdropContainer}>
 
-        <FlatList 
-          data={moviesData}
-          keyExtractor={ item => item.movie }
-          renderItem={({item}) => {
-            if(item.posterPath) {
-              return(
-                <View style={{ backgroundColor: "black", width: screenWidth, height: BACKDROP_HEIGHT}} >
-                  <Image source={item.posterPath} resizeMode="cover" style={styles.backdropImage} />
-                </View>
-              )
-            }
-          }}
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          style={ [StyleSheet.absoluteFillObject] }
-        />
-
-        {/* <LinearGradient colors={["transparent", "white"]} style={{position: 'absolute', width: "100%", height: "100%", bottom: 0}} /> */}
+        <LinearGradient colors={["transparent", "white"]} style={{position: 'absolute', width: "100%", height: "100%", bottom: 0}} />
       </View>
 
 
@@ -100,7 +85,7 @@ const styles = StyleSheet.create({
   },
   backdropContainer: {
     position: "absolute",
-    width: "100%",
+    width: screenWidth,
     top: 0,
     height: BACKDROP_HEIGHT,
   },
