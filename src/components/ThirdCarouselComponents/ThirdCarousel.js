@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { View, StyleSheet, FlatList, Dimensions, Animated, Image } from 'react-native';
+import { View, StyleSheet, Dimensions, Animated, Image, Platform } from 'react-native';
 import MaskedView from '@react-native-masked-view/masked-view';
 import { Svg, Rect } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -19,10 +19,50 @@ const AnimatedSvg = Animated.createAnimatedComponent(Svg);
 const ThirdCarousel = () => {
 
   const scrollX = useRef( new Animated.Value(0)).current
-
   return (
     <View style={styles.container} >
       <View style={styles.backdropContainer}>
+
+        {
+          moviesData.map((singleMovie, index) => {
+            if(!singleMovie.posterPath) {
+              return null
+            }
+
+            const inputRange = [
+              (index - 2) * ITEM_SIZE,
+              (index - 1) * ITEM_SIZE,
+              index * ITEM_SIZE
+            ]
+
+            const translateX = scrollX.interpolate({
+              inputRange,
+              outputRange: [-screenWidth, 0, screenWidth]
+            })
+
+            if(singleMovie.posterPath) {
+              return (
+                <MaskedView
+                  style={{position: 'absolute', width: "100%", height: "100%", top: 0, left: 0}}
+                  key={singleMovie.movie}
+                  androidRenderingMode={Platform.OS === 'android' ? 'software' : 'hardware'} //This is necessary to animate the "maskElement" on Android
+                  maskElement={
+                    <AnimatedSvg
+                      width={screenWidth}
+                      height={screenHeight}
+                      viewBox={`0 0 ${screenWidth} ${screenHeight}`}
+                      style={{transform: [{translateX}]}}
+                    >
+                      <Rect x="0" y="0" width={screenWidth} height={screenHeight} fill="red" />
+                    </AnimatedSvg>
+                  }
+                >
+                  <Image source={singleMovie.posterPath} resizeMode="cover" style={{width: "100%", height: "100%"}} />
+                </MaskedView>
+              )
+            }
+          })
+        }
 
         <LinearGradient colors={["transparent", "white"]} style={{position: 'absolute', width: "100%", height: "100%", bottom: 0}} />
       </View>
