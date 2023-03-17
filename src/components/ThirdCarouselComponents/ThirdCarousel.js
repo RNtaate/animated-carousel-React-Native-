@@ -1,5 +1,7 @@
 import React, { useRef } from 'react'
 import { View, StyleSheet, FlatList, Dimensions, Animated, Image } from 'react-native';
+import MaskedView from '@react-native-masked-view/masked-view';
+import { Svg, Rect } from 'react-native-svg';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import SecondImageCard from '../SecondCarouselComponents/SecondImageCard';
@@ -19,30 +21,25 @@ const ThirdCarousel = () => {
   return (
     <View style={styles.container} >
       <View style={styles.backdropContainer}>
-        {
-          moviesData.map((singleMovie, index) => {
 
-            const inputRange = [
-              (index - 2) * ITEM_SIZE,
-              (index - 1) * ITEM_SIZE,
-              index * ITEM_SIZE
-            ]
+        <FlatList 
+          data={moviesData}
+          keyExtractor={ item => item.movie }
+          renderItem={({item}) => {
+            if(item.posterPath) {
+              return(
+                <View style={{ backgroundColor: "black", width: screenWidth, height: BACKDROP_HEIGHT}} >
+                  <Image source={item.posterPath} resizeMode="cover" style={styles.backdropImage} />
+                </View>
+              )
+            }
+          }}
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          style={ [StyleSheet.absoluteFillObject] }
+        />
 
-            const opacity = scrollX.interpolate({
-              inputRange,
-              outputRange: [0, 1, 0]
-            })
-            return (
-              <Animated.View key={singleMovie.movie} style={{position: "absolute", top: 0, width: "100%", backgroundColor: 'transparent', height: "100%", overflow: 'hidden', opacity}} >
-                {singleMovie.posterPath ? 
-                  <Image source={singleMovie.posterPath} resizeMode="cover" style={styles.backdropImage} />
-                  : null
-                }
-              </Animated.View>
-            )
-          })
-        }
-        <LinearGradient colors={["transparent", "white"]} style={{position: 'absolute', width: "100%", height: "100%", bottom: 0}} />
+        {/* <LinearGradient colors={["transparent", "white"]} style={{position: 'absolute', width: "100%", height: "100%", bottom: 0}} /> */}
       </View>
 
 
