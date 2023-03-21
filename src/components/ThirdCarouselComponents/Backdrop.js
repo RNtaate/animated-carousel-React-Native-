@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
     width: screenWidth,
     top: 0,
     height: BACKDROP_HEIGHT,
-    backgroundColor: "cyan"
   },
   maskedView: {
     position: "absolute",
