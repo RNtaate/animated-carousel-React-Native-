@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef, useState} from 'react'
 import { View, Text, FlatList, StyleSheet, Dimensions, Image } from 'react-native';
 
 import movieList from '../../services/movielist.json'
@@ -10,9 +10,16 @@ const ITEM_WIDTH = 100
 const ITEM_HEIGHT = 100
 
 const FourthCarousel = () => {
+
+  const upperRef = useRef();
+  const lowerRef = useRef();
+
+  const [ activeIndex, setActiveIndex ] = useState(0)
+
   return (
     <View style={styles.wrappingContainer} >
       <FlatList
+        ref={upperRef}
         style={styles.upperList} 
         data={moviesData}
         keyExtractor={item => item.id.toString()}
@@ -26,18 +33,22 @@ const FourthCarousel = () => {
           )
         }}
         pagingEnabled
+        onMomentumScrollEnd={(ev) => {
+          setActiveIndex(Math.round(ev.nativeEvent.contentOffset.x / screenWidth))
+        }}
       />
 
       <View style={styles.viewCover} ></View>
 
       <FlatList style={styles.lowerList}
+        ref={lowerRef}
         data={moviesData}
         keyExtractor={item => item.id.toString()}
         horizontal
-        renderItem={({item}) => {
+        renderItem={({item, index}) => {
           return(
           <View style={styles.lowerImageContainer} >
-              <Image source={{uri: `${POSTER_LINK}${item.poster_path}`}} resizeMode="cover" style={styles.lowerImage} />
+              <Image source={{uri: `${POSTER_LINK}${item.poster_path}`}} resizeMode="cover" style={[styles.lowerImage, {borderColor: index === activeIndex ? "white" : "#999"}]} />
           </View>
           )
         }}
@@ -81,7 +92,6 @@ const styles = StyleSheet.create({
     height: "100%",
     borderRadius: 20,
     borderWidth: 2,
-    borderColor: "#bbb"
   }
 })
 
