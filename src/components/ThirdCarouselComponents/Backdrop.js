@@ -33,7 +33,7 @@ const Backdrop = ({scrollX, data}) => {
           <MaskedView
             style={styles.maskedView}
             key={singleMovie.movie}
-            androidRenderingMode="software"
+            androidRenderingMode={Platform.OS === 'android' ? "software" : "hardware"}
             maskElement={
               <AnimatedSvg
                 width={screenWidth}
