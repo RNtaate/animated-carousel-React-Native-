@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     height: "100%",
     top: 0,
     left: 0,
-    backgroundColor: 'red'
   },  
   backdropImage: {
     width: "100%",
