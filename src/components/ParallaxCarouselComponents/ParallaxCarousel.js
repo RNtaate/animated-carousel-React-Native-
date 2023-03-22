@@ -1,23 +1,42 @@
-import React from 'react';
-import { View, Text, Dimensions, Image, FlatList, StyleSheet } from 'react-native';
+import React, { useRef } from 'react';
+import { View, Text, Dimensions, Image, FlatList, StyleSheet, Animated } from 'react-native';
 import unsplash from '../../services/unsplash_images.json';
 
 const unsplashImages = unsplash.results;
 const { width: screenWidth, height: screenHeight } = Dimensions.get("screen");
 
 const ParallaxCarousel = () => {
+
+  const scrollX = useRef(new Animated.Value(0)).current
+
   return (
     <View style={styles.wrappingContainer} >
-      <FlatList
+      <Animated.FlatList
         data={unsplashImages}
         keyExtractor={item => item.id.toString()}
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {x: scrollX}}}],
+          { useNativeDriver: true }
+        )}
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => {
+        renderItem={({item, index}) => {
+
+          const inputRange = [
+            (index - 1) * screenWidth,
+            index * screenWidth,
+            (index + 1) * screenWidth
+          ]
+
+          const translateX = scrollX.interpolate({
+            inputRange,
+            outputRange: [-screenWidth * 0.7, 0, screenWidth * 0.7]
+          })
+
           return(
             <View style={styles.boundingView} >
-              <View style={styles.imageContainer}>
-                <Image source={{uri: item.image}} resizeMode="cover" style={styles.carouselImage} />
+              <View style={styles.imageFrame}>
+                <Animated.Image source={{uri: item.image}} resizeMode="cover" style={[styles.carouselImage, {transform: [{translateX}]}]} />
               </View>
             </View>
           )
@@ -41,15 +60,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  imageContainer: {
+  imageFrame: {
     width: screenWidth * 0.7,
     height: screenHeight * 0.4,
     borderWidth: 10,
     borderColor: "white",
-    elevation: 15
+    elevation: 15,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: 'hidden'
   },
   carouselImage: {
-    width: "100%",
+    width: (screenWidth * 0.7) * 1.4,
     height: "100%"
   }
 })
