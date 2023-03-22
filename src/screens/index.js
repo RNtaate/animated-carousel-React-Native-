@@ -5,6 +5,7 @@ import { Ionicons, Entypo } from '@expo/vector-icons'
 import FirstCarouselScreen from './FirstCarouselScreen';
 import SecondCarouselScreen from './SecondCarouselScreen';
 import ThirdCarouselScreen from './ThirdCarouselScreen';
+import FourthCarouselScreen from './FourthCarouselScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -47,6 +48,7 @@ const CarouselTabs = () => {
       <Tab.Screen name='Carousel 1' component={FirstCarouselScreen} />
       <Tab.Screen name="Carousel 2" component={SecondCarouselScreen} />
       <Tab.Screen name="Carousel 3" component={ThirdCarouselScreen} />
+      <Tab.Screen name="Carousel 4" component={FourthCarouselScreen} />
     </Tab.Navigator>
   )
 }
