@@ -6,9 +6,18 @@ import FirstCarouselScreen from './FirstCarouselScreen';
 import SecondCarouselScreen from './SecondCarouselScreen';
 import ThirdCarouselScreen from './ThirdCarouselScreen';
 import FourthCarouselScreen from './FourthCarouselScreen';
+import ParallaxCarouselScreen from './ParallaxCarouselScreen';
 
 
 const Tab = createBottomTabNavigator();
+
+const tabScreens = [
+  {name: "Carousel 1", component: FirstCarouselScreen},
+  {name: "Carousel 2", component: SecondCarouselScreen },
+  {name: "Carousel 3", component: ThirdCarouselScreen },
+  {name: "Carousel 4", component: FourthCarouselScreen },
+  {name: "Parallax", component: ParallaxCarouselScreen },
+]
 
 const CarouselTabs = () => {
 
@@ -45,10 +54,11 @@ const CarouselTabs = () => {
 
   return (
     <Tab.Navigator screenOptions={ createScreenOptions }>
-      <Tab.Screen name='Carousel 1' component={FirstCarouselScreen} />
-      <Tab.Screen name="Carousel 2" component={SecondCarouselScreen} />
-      <Tab.Screen name="Carousel 3" component={ThirdCarouselScreen} />
-      <Tab.Screen name="Carousel 4" component={FourthCarouselScreen} />
+      { tabScreens.map((screen) => {
+        return(
+          <Tab.Screen key={screen.name} name={screen.name} component={screen.component} />
+        )
+      }) }
     </Tab.Navigator>
   )
 }
