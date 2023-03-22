@@ -1,11 +1,10 @@
 import React, {useRef, useState} from 'react'
 import { View, FlatList, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 
-import movieList from '../../services/movielist.json'
-import { POSTER_LINK } from '../../services/Helpers';
+import unsplash from '../../services/unsplash_images.json'
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("screen");
-const moviesData = movieList.results;
+const unsplashImages = unsplash.results;
 const ITEM_WIDTH = 100
 const ITEM_HEIGHT = 100
 const ITEM_WIDTH_MULTIPLIER = 1.2
@@ -41,14 +40,14 @@ const FourthCarousel = () => {
       <FlatList
         ref={upperRef}
         style={styles.upperList} 
-        data={moviesData}
+        data={unsplashImages}
         keyExtractor={item => item.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({item}) => {
           return (
             <View style={styles.imageContainer} >
-              <Image source={{uri: `${POSTER_LINK}${item.poster_path}`}} resizeMode="cover" style={styles.upperImage} />
+              <Image source={{uri: `${item.image}`}} resizeMode="cover" style={styles.upperImage} />
             </View>
           )
         }}
@@ -62,7 +61,7 @@ const FourthCarousel = () => {
 
       <FlatList style={styles.lowerList}
         ref={lowerRef}
-        data={moviesData}
+        data={unsplashImages}
         keyExtractor={item => item.id.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -74,7 +73,7 @@ const FourthCarousel = () => {
             }}
           >
             <View style={styles.lowerImageContainer} >
-                <Image source={{uri: `${POSTER_LINK}${item.poster_path}`}} resizeMode="cover" style={[styles.lowerImage, {borderColor: index === activeIndex ? "white" : "#888"}]} />
+                <Image source={{uri: `${item.image}`}} resizeMode="cover" style={[styles.lowerImage, {borderColor: index === activeIndex ? "white" : "#888"}]} />
             </View>
           </TouchableOpacity>
           )
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: screenHeight,
     top: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
     pointerEvents: "none"
   },
   lowerList: {
