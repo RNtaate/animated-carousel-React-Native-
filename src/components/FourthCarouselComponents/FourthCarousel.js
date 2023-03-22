@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react'
-import { View, Text, FlatList, StyleSheet, Dimensions, Image } from 'react-native';
+import { View, FlatList, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 
 import movieList from '../../services/movielist.json'
 import { POSTER_LINK } from '../../services/Helpers';
@@ -8,6 +8,8 @@ const { width: screenWidth, height: screenHeight } = Dimensions.get("screen");
 const moviesData = movieList.results;
 const ITEM_WIDTH = 100
 const ITEM_HEIGHT = 100
+const ITEM_WIDTH_MULTIPLIER = 1.2
+const LOWER_IMAGE_CONTAINER_WIDTH = ITEM_WIDTH * ITEM_WIDTH_MULTIPLIER;
 
 const FourthCarousel = () => {
 
@@ -15,6 +17,24 @@ const FourthCarousel = () => {
   const lowerRef = useRef();
 
   const [ activeIndex, setActiveIndex ] = useState(0)
+
+  const scrollFlatlists = (index) => {
+    setActiveIndex(index);
+    upperRef?.current?.scrollToOffset({
+      offset: (index * screenWidth)
+    })
+
+    if( ((index * LOWER_IMAGE_CONTAINER_WIDTH) + (LOWER_IMAGE_CONTAINER_WIDTH / 2)) > (screenWidth / 2) ) {
+      lowerRef?.current?.scrollToOffset({
+        offset: (index * LOWER_IMAGE_CONTAINER_WIDTH + (LOWER_IMAGE_CONTAINER_WIDTH / 2)) - (screenWidth / 2),
+        animated: true
+      })
+    } else {
+      lowerRef?.current?.scrollToOffset({
+        offset: 0
+      })
+    }
+  }
 
   return (
     <View style={styles.wrappingContainer} >
@@ -34,7 +54,7 @@ const FourthCarousel = () => {
         }}
         pagingEnabled
         onMomentumScrollEnd={(ev) => {
-          setActiveIndex(Math.round(ev.nativeEvent.contentOffset.x / screenWidth))
+          scrollFlatlists(Math.round(ev.nativeEvent.contentOffset.x / screenWidth))
         }}
       />
 
@@ -48,9 +68,15 @@ const FourthCarousel = () => {
         showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => {
           return(
-          <View style={styles.lowerImageContainer} >
-              <Image source={{uri: `${POSTER_LINK}${item.poster_path}`}} resizeMode="cover" style={[styles.lowerImage, {borderColor: index === activeIndex ? "white" : "#888"}]} />
-          </View>
+          <TouchableOpacity
+            onPress={() => {
+              scrollFlatlists(index);
+            }}
+          >
+            <View style={styles.lowerImageContainer} >
+                <Image source={{uri: `${POSTER_LINK}${item.poster_path}`}} resizeMode="cover" style={[styles.lowerImage, {borderColor: index === activeIndex ? "white" : "#888"}]} />
+            </View>
+          </TouchableOpacity>
           )
         }}
       />
@@ -79,7 +105,7 @@ const styles = StyleSheet.create({
     bottom: ITEM_HEIGHT * 0.7,
   },
   lowerImageContainer: {
-    width: ITEM_WIDTH * 1.2,
+    width: LOWER_IMAGE_CONTAINER_WIDTH,
     height: ITEM_HEIGHT,
     justifyContent: 'center',
     alignItems: "center",
