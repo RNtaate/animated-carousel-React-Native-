@@ -1,14 +1,23 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons, Entypo } from '@expo/vector-icons'
+import { Ionicons, Entypo, MaterialIcons } from '@expo/vector-icons'
 
 import FirstCarouselScreen from './FirstCarouselScreen';
 import SecondCarouselScreen from './SecondCarouselScreen';
 import ThirdCarouselScreen from './ThirdCarouselScreen';
 import FourthCarouselScreen from './FourthCarouselScreen';
+import ParallaxCarouselScreen from './ParallaxCarouselScreen';
 
 
 const Tab = createBottomTabNavigator();
+
+const tabScreens = [
+  {name: "Carousel 1", component: FirstCarouselScreen},
+  {name: "Carousel 2", component: SecondCarouselScreen },
+  {name: "Carousel 3", component: ThirdCarouselScreen },
+  {name: "Carousel 4", component: FourthCarouselScreen },
+  {name: "Parallax", component: ParallaxCarouselScreen },
+]
 
 const CarouselTabs = () => {
 
@@ -17,7 +26,11 @@ const CarouselTabs = () => {
       return (
         <Ionicons name="list" size={24} color={color} />
       )
-    }else {
+    } else if(routeName == "Parallax") {
+      return(
+        <MaterialIcons name="view-carousel" size={24} color={color} />
+      )
+    } else {
       return (
         <Entypo name='list' size={24} color={color} />
       )
@@ -45,10 +58,11 @@ const CarouselTabs = () => {
 
   return (
     <Tab.Navigator screenOptions={ createScreenOptions }>
-      <Tab.Screen name='Carousel 1' component={FirstCarouselScreen} />
-      <Tab.Screen name="Carousel 2" component={SecondCarouselScreen} />
-      <Tab.Screen name="Carousel 3" component={ThirdCarouselScreen} />
-      <Tab.Screen name="Carousel 4" component={FourthCarouselScreen} />
+      { tabScreens.map((screen) => {
+        return(
+          <Tab.Screen key={screen.name} name={screen.name} component={screen.component} />
+        )
+      }) }
     </Tab.Navigator>
   )
 }
