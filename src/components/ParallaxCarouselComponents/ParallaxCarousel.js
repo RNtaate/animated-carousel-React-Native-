@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, Text, Dimensions, Image, FlatList, StyleSheet, Animated } from 'react-native';
+import { View, Dimensions, StyleSheet, Animated } from 'react-native';
 import unsplash from '../../services/unsplash_images.json';
 
 const unsplashImages = unsplash.results;
