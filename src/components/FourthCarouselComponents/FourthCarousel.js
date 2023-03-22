@@ -1,12 +1,9 @@
 import React, {useRef, useState} from 'react'
 import { View, FlatList, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 
-import movieList from '../../services/movielist.json';
 import unsplash from '../../services/unsplash_images.json'
-import { POSTER_LINK } from '../../services/Helpers';
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("screen");
-const moviesData = movieList.results;
 const unsplashImages = unsplash.results;
 const ITEM_WIDTH = 100
 const ITEM_HEIGHT = 100
@@ -99,7 +96,7 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: screenHeight,
     top: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
     pointerEvents: "none"
   },
   lowerList: {
