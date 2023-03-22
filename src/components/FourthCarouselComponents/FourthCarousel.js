@@ -45,10 +45,11 @@ const FourthCarousel = () => {
         data={moviesData}
         keyExtractor={item => item.id.toString()}
         horizontal
+        showsHorizontalScrollIndicator={false}
         renderItem={({item, index}) => {
           return(
           <View style={styles.lowerImageContainer} >
-              <Image source={{uri: `${POSTER_LINK}${item.poster_path}`}} resizeMode="cover" style={[styles.lowerImage, {borderColor: index === activeIndex ? "white" : "#999"}]} />
+              <Image source={{uri: `${POSTER_LINK}${item.poster_path}`}} resizeMode="cover" style={[styles.lowerImage, {borderColor: index === activeIndex ? "white" : "#888"}]} />
           </View>
           )
         }}
@@ -81,7 +82,8 @@ const styles = StyleSheet.create({
     width: ITEM_WIDTH * 1.2,
     height: ITEM_HEIGHT,
     justifyContent: 'center',
-    alignItems: "center"
+    alignItems: "center",
+    elevation: 20
   },
   upperImage: {
     width: "100%",
