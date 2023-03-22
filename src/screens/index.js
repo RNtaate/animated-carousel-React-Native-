@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons, Entypo } from '@expo/vector-icons'
+import { Ionicons, Entypo, MaterialIcons } from '@expo/vector-icons'
 
 import FirstCarouselScreen from './FirstCarouselScreen';
 import SecondCarouselScreen from './SecondCarouselScreen';
@@ -26,7 +26,11 @@ const CarouselTabs = () => {
       return (
         <Ionicons name="list" size={24} color={color} />
       )
-    }else {
+    } else if(routeName == "Parallax") {
+      return(
+        <MaterialIcons name="view-carousel" size={24} color={color} />
+      )
+    } else {
       return (
         <Entypo name='list' size={24} color={color} />
       )
