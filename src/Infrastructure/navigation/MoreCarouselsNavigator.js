@@ -35,6 +35,7 @@ const MoreCarouselsNavigator = () => {
       {drawerScreens.map(screen => {
         return(
           <Drawer.Screen name={screen.name} component={screen.component}
+            key={screen.name}
             options={{
               drawerIcon: ({focused, size, color}) => {
                 return (
