@@ -2,29 +2,26 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import FourthCarouselScreen from '../../screens/FourthCarouselScreen';
+import ParallaxCarouselScreen from '../../screens/ParallaxCarouselScreen';
+
 const Drawer = createDrawerNavigator();
-
-const Home = () => {
-  return(
-    <View style={{flex: 1, justifyContent: 'center', alignItems: "center"}} >
-      <Text>Home Screen</Text>
-    </View>
-  )
-}
-
-const Notifications = () => {
-  return(
-    <View style={{flex: 1, justifyContent: 'center', alignItems: "center"}} >
-      <Text>Notifications Screen</Text>
-    </View>
-  )
-}
 
 const MoreCarouselsNavigator = () => {
   return(
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Notifications" component={Notifications} />
+    <Drawer.Navigator
+      screenOptions={{
+        headerShown: false,
+        drawerInactiveTintColor: "white",
+        drawerActiveTintColor: "orange",
+        drawerStyle: {
+          backgroundColor: "rgba(0, 0, 0, 0.7)"
+        }
+      }}
+      defaultStatus="open"
+    >
+      <Drawer.Screen name="Carousel 4" component={FourthCarouselScreen} />
+      <Drawer.Screen name="Parallax" component={ParallaxCarouselScreen} />
     </Drawer.Navigator>
   )
 }
