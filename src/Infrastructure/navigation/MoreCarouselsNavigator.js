@@ -8,6 +8,11 @@ import ParallaxCarouselScreen from '../../screens/ParallaxCarouselScreen';
 
 const Drawer = createDrawerNavigator();
 
+const drawerScreens = [
+  {name: "Carousel 4", component: FourthCarouselScreen},
+  {name: "Parallax", component: ParallaxCarouselScreen}
+]
+
 const MoreCarouselsNavigator = () => {
   return(
     <Drawer.Navigator
@@ -26,24 +31,21 @@ const MoreCarouselsNavigator = () => {
         },
       }}
     >
-      <Drawer.Screen name="Carousel 4" component={FourthCarouselScreen}
-        options={{
-          drawerIcon: ({focused, size, color}) => {
-            return (
-              <MaterialCommunityIcons name={focused? 'view-carousel' : 'view-carousel-outline'} size={size} color={color} />
-            )
-          }
-        }}
-      />
-      <Drawer.Screen name="Parallax" component={ParallaxCarouselScreen}
-        options={{
-          drawerIcon: ({focused, size, color}) => {
-            return (
-              <MaterialCommunityIcons name={focused? 'view-carousel' : 'view-carousel-outline'} size={size} color={color} />
-            )
-          }
-        }}        
-      />
+
+      {drawerScreens.map(screen => {
+        return(
+          <Drawer.Screen name={screen.name} component={screen.component}
+            options={{
+              drawerIcon: ({focused, size, color}) => {
+                return (
+                  <MaterialCommunityIcons name={focused? 'view-carousel' : 'view-carousel-outline'} size={size} color={color} />
+                )
+              }
+            }}
+          />          
+        )
+      })}
+      
     </Drawer.Navigator>
   )
 }
