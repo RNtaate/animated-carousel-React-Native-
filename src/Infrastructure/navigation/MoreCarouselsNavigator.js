@@ -11,14 +11,19 @@ const MoreCarouselsNavigator = () => {
   return(
     <Drawer.Navigator
       screenOptions={{
-        headerShown: false,
+        headerTransparent: true,
+        headerBackground: () => {
+          return (
+            <View style={{flex: 1, backgroundColor: "rgba(0, 0, 0, 0.3)"}} ></View>
+          )
+        },
+        headerTintColor: "white",
         drawerInactiveTintColor: "white",
         drawerActiveTintColor: "orange",
         drawerStyle: {
           backgroundColor: "rgba(0, 0, 0, 0.7)"
         }
       }}
-      defaultStatus="open"
     >
       <Drawer.Screen name="Carousel 4" component={FourthCarouselScreen} />
       <Drawer.Screen name="Parallax" component={ParallaxCarouselScreen} />
