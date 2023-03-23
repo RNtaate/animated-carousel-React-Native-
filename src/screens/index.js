@@ -5,8 +5,7 @@ import { Ionicons, Entypo, MaterialIcons } from '@expo/vector-icons'
 import FirstCarouselScreen from './FirstCarouselScreen';
 import SecondCarouselScreen from './SecondCarouselScreen';
 import ThirdCarouselScreen from './ThirdCarouselScreen';
-import FourthCarouselScreen from './FourthCarouselScreen';
-import ParallaxCarouselScreen from './ParallaxCarouselScreen';
+import MoreCarouselsNavigator from '../Infrastructure/navigation/MoreCarouselsNavigator';
 
 
 const Tab = createBottomTabNavigator();
@@ -15,8 +14,7 @@ const tabScreens = [
   {name: "Carousel 1", component: FirstCarouselScreen},
   {name: "Carousel 2", component: SecondCarouselScreen },
   {name: "Carousel 3", component: ThirdCarouselScreen },
-  {name: "Carousel 4", component: FourthCarouselScreen },
-  {name: "Parallax", component: ParallaxCarouselScreen },
+  {name: "More", component: MoreCarouselsNavigator}
 ]
 
 const CarouselTabs = () => {
@@ -26,11 +24,13 @@ const CarouselTabs = () => {
       return (
         <Ionicons name="list" size={24} color={color} />
       )
-    } else if(routeName == "Parallax") {
-      return(
-        <MaterialIcons name="view-carousel" size={24} color={color} />
+    } 
+    else if (routeName == "More") {
+      return (
+        <MaterialIcons name='more-horiz' size={24} color={color} />
       )
-    } else {
+    }
+    else {
       return (
         <Entypo name='list' size={24} color={color} />
       )
