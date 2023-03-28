@@ -1,4 +1,4 @@
-# Animated Carousel (React Native)
+# Animated Carousels (React Native)
 
 ## Project Description
 > This project is a collection of a few carousels built in React-Native using the __*Animated API*__.
@@ -7,8 +7,15 @@
 
 > The project leverages a number of React-Native functionalites and components forexample __Navigation__ such as `Bottom Tabs` and `Drawer Navigation`, The __*Animated API*__, `FlatLists`, `Masked View`, and `Svg`.
 
-## Screenshot
-<img src="./assets/screenshot1.gif" width="35%" height="35%"  ></img>
+## Screenshots / Demo videos
+#### Carousels 1 & 2
+https://user-images.githubusercontent.com/42064746/228376816-f4a0f22b-a3ea-49df-91e4-ccc6e8b6d50d.mp4
+
+#### Carousel 3
+https://user-images.githubusercontent.com/42064746/228378076-87813e0d-e5c4-4a03-b840-334550d9efb7.mp4
+
+#### Carousel 4 & 5
+https://user-images.githubusercontent.com/42064746/228377866-07e9e1d5-9571-4159-8862-935bcf50b3a7.mp4
 
 ##  🔧 Built with
 
@@ -20,6 +27,7 @@
  - <*not yet available*>
 
 ## Get started
+
 ### Prerequisites
 
 - Yarn
