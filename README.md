@@ -1,14 +1,15 @@
-# Animated Carousel (React Native)
+# Animated Carousels (React Native)
 
 ## Project Description
-> This is a small project built to demonstrate and better understand the __*Animated API*__ that is shipped with React Native.
+> This project is a collection of a few carousels built in React-Native using the __*Animated API*__.
 
-> The project leverages an __Animated FlatList__ React Native Component that is used to build a carousel and the background images change in accordance with the scrolling of the __Animated FlatList__
+> It was built to demonstrate and better understand the __*Animated API*__ that is shipped with React-Native
 
-> __NOTE__: The background images were built using the __Animated API__ to animate the __Image__ component from React native.
+> The project leverages a number of React-Native functionalites and components forexample __Navigation__ such as `Bottom Tabs` and `Drawer Navigation`, The __*Animated API*__, `FlatLists`, `Masked View`, and `Svg`.
 
-## Screenshot
-<img src="./assets/screenshot1.gif" width="35%" height="35%"  ></img>
+## Screenshot / Demo video
+
+https://user-images.githubusercontent.com/42064746/228385180-8491f93b-7ede-4506-9f1e-391708ea895c.mp4
 
 ##  🔧 Built with
 
@@ -20,6 +21,7 @@
  - <*not yet available*>
 
 ## Get started
+
 ### Prerequisites
 
 - Yarn
